@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:image_search_app/model/photo.dart';
 
 class PhotoWidget extends StatelessWidget {
-  const PhotoWidget({Key? key}) : super(key: key);
+  final Photo photo;
+
+  const PhotoWidget({
+    Key? key,
+    required this.photo,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,14 +15,15 @@ class PhotoWidget extends StatelessWidget {
       width: 10,
       height: 10,
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Colors.red,
-          borderRadius: BorderRadius.all(Radius.circular(16.0)),
-          // image: DecorationImage(
-          //   fit: BoxFit.cover,
-          //   image: NetworkImage(
-          //       ''),
-          // ),
+          borderRadius: const BorderRadius.all(Radius.circular(16.0)),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: NetworkImage(
+              photo.previewURL,
+            ),
+          ),
         ),
       ),
     );
